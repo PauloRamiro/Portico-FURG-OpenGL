@@ -38,14 +38,18 @@ glMateriali(GL_FRONT, GL_SHININESS, 30)
 glLightfv(GL_LIGHT0, GL_POSITION,[2, 3, -1, 1])
 
 
-cylinder(0.25, 3, -1, 0, 0, 20)
-cylinder(0.25, 3, 1, 0, 0, 20)
+
+
 
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             quit()
+    
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+    glRotatef(1, 3, 1, 1)
+    cylinder(0.1, 0.2, 2, 1, 2, 20)
 
     pygame.display.flip()
     pygame.time.wait(10)
