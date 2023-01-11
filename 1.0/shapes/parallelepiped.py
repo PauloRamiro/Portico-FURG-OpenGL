@@ -5,16 +5,17 @@ from OpenGL.GLU import *
 from transforms import *
 
 '''
--> Classe para criar um cubo
-* x -> coordenada em x do cubo;
-* y -> coordenada em y do cubo;
-* z -> coordenada em z do cubo;
+-> Classe para criar um paralelepípedo
+* x -> coordenada em x do paralelepípedo;
+* y -> coordenada em y do paralelepípedo;
+* z -> coordenada em z do paralelepípedo;
+* width -> tamanho da aresta em x;
+* height -> tamanho da aresta em y;
+* lenght -> tamanho da aresta em z;
 * scale -> escala do objeto que será desenhado
 '''
-class Cube(Transforms):
-    def __init__(self, x:float = 0.0, y:float = 0.0, z:float = 0.0, width:float = 1.0, heigth:float = 1.0, length:float = 1.0, scale = 1.0) -> None:
-        super().__init__(x, y, z)
-        
+class Parallelepiped(Transforms):
+    def __init__(self, x:float = 0.0, y:float = 0.0, z:float = 0.0, width:float = 1.0, heigth:float = 1.0, length:float = 1.0, scale = 1.0, angle = 0) -> None:
         self.x = x
         self.y = y
         self.z = z
@@ -22,16 +23,17 @@ class Cube(Transforms):
         self.heigth = heigth
         self.length = length
         self.objectScale = scale
+        self.angle = math.radians(angle)
         
         self.points = [
-            [((self.x + 1) * self.width * self.objectScale), ((self.y - 1) * self.heigth * self.objectScale), ((self.z - 1) * self.length * self.objectScale)],
-            [((self.x + 1) * self.width * self.objectScale), ((self.y + 1) * self.heigth * self.objectScale), ((self.z - 1) * self.length * self.objectScale)],
-            [((self.x - 1) * self.width * self.objectScale), ((self.y + 1) * self.heigth * self.objectScale), ((self.z - 1) * self.length * self.objectScale)],
-            [((self.x - 1) * self.width * self.objectScale), ((self.y - 1) * self.heigth * self.objectScale), ((self.z - 1) * self.length * self.objectScale)],
-            [((self.x + 1) * self.width * self.objectScale), ((self.y - 1) * self.heigth * self.objectScale), ((self.z + 1) * self.length * self.objectScale)],
-            [((self.x + 1) * self.width * self.objectScale), ((self.y + 1) * self.heigth * self.objectScale), ((self.z + 1) * self.length * self.objectScale)],
-            [((self.x - 1) * self.width * self.objectScale), ((self.y - 1) * self.heigth * self.objectScale), ((self.z + 1) * self.length * self.objectScale)],
-            [((self.x - 1) * self.width * self.objectScale), ((self.y + 1) * self.heigth * self.objectScale), ((self.z + 1) * self.length * self.objectScale)],
+            [((self.x + (self.width * math.cos(self.angle))) * self.objectScale), ((self.y + (self.width * math.sin(self.angle))) * self.objectScale),((self.z) * self.objectScale)], #Ponto 100
+            [((self.x + (self.width * math.cos(self.angle) - (self.heigth * math.sin(self.angle)))) * self.objectScale), ((self.y + (self.heigth * math.cos(self.angle) + (self.width * math.sin(self.angle)))) * self.objectScale), ((self.z) * self.objectScale)], #Ponto 110
+            [((self.x - (self.heigth * math.sin(self.angle))) * self.objectScale), ((self.y + (self.heigth * math.cos(self.angle))) * self.objectScale), ((self.z) * self.objectScale)], # Ponto 010
+            [((self.x) * self.objectScale), ((self.y) * self.objectScale), ((self.z) * self.objectScale)], # Ponto 000
+            [((self.x + (self.width * math.cos(self.angle))) * self.objectScale), ((self.y + (self.width * math.sin(self.angle))) * self.objectScale), ((self.z + self.length) * self.objectScale)], # Ponto 101
+            [((self.x + (self.width * math.cos(self.angle) - (self.heigth * math.sin(self.angle)))) * self.objectScale), ((self.y + (self.heigth * math.cos(self.angle) + (self.width * math.sin(self.angle)))) * self.objectScale), ((self.z + self.length) * self.objectScale)], # Ponto 111
+            [((self.x) * self.objectScale), ((self.y) * self.objectScale), ((self.z + self.length) * self.objectScale)], # Ponto 001 
+            [((self.x - (self.heigth * math.sin(self.angle))) * self.objectScale), ((self.y + (self.heigth * math.cos(self.angle))) * self.objectScale), ((self.z + self.length) * self.objectScale)], # Ponto 011
         ]
         
         self.edges = [
@@ -66,11 +68,10 @@ class Cube(Transforms):
     def connect_points(self, points, edges) -> None:
         try:
             glBegin(GL_LINES)
-            x = 0
+            
             for edge in edges:
                 for point in edge:
-                    x += 1
-                    glColor3fv((x, 1, 0))
+                    glColor3fv((1, 1, 0))
                     glVertex3fv(points[point])
             glEnd()
             
@@ -96,7 +97,7 @@ class Cube(Transforms):
             raise f'Cannot create surfaces! Exception -> {exception}'
     
     '''
-    * Método para desenhar o cubo;
+    * Método para desenhar o paralelepípedo;
     '''
     def draw(self) -> None:
         try:

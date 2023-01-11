@@ -38,8 +38,8 @@ glMateriali(GL_FRONT, GL_SHININESS, 30)
 glLightfv(GL_LIGHT0, GL_POSITION,[2, 3, -1, 1])
 
 
-cylinder(0.25, 3, -1, 0, 0, 20)
-cylinder(0.25, 3, 1, 0, 0, 20)
+cylinder(0.1, 1, 2, 1, 2, 20)
+cylinder(0.1, 1, -1, 0, 0, 20)
 
 
 while True:
