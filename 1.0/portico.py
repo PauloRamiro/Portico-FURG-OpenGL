@@ -76,6 +76,22 @@ class Portico:
                 # self.Parallelepiped.rotate(1, 1, 1, 1)
                 
                 glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
+                glEnable(GL_LIGHT0)
+                glEnable(GL_LIGHTING)
+
+                glEnable(GL_DEPTH_TEST)
+                glDepthFunc(GL_LEQUAL)
+                glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST)
+
+                glShadeModel(GL_SMOOTH)
+
+                glEnable(GL_COLOR_MATERIAL)
+                glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE)
+                glEnable(GL_TEXTURE_2D)
+                specReflection = [0.5, 0.5, 0.5, 0.5]
+                glMaterialfv(GL_FRONT, GL_SPECULAR, specReflection)
+                glMateriali(GL_FRONT, GL_SHININESS, 30)
+                glLightfv(GL_LIGHT0, GL_POSITION,[8, 10, -5, 10])
                 
                 self.guarita.draw()
                 self.guarita_p_e_f.draw()
