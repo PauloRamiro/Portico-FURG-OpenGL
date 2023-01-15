@@ -6,6 +6,7 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 from shapes.parallelepiped import *
 from shapes.cylinder import *
+from shapes.arc import *
 from transforms import Transforms as T
 
 '''
@@ -31,18 +32,7 @@ class Portico:
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- ARCO 01 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=
         self.pilar_esquerdo_frente = Cylinder(x=-10.5, radius=.1, heigth=5)
         self.pilar_direito_frente = Cylinder(x=10.5, radius=.1, heigth=5)
-        
-<<<<<<< Updated upstream
-        self.viga_a_e_1 = Parallelepiped(x=-10.40, y = 5, z=-0.05, width = 2.7,length=0.08 , heigth=0.08, angle=115)
-        self.viga_a_e_2 = Parallelepiped(x=-10.40, y = 5, z=-0.05, width = 3.0,length=0.08 , heigth=0.08, angle=97.5)
-        self.viga_a_e_3 = Parallelepiped(x=-10.40, y = 5, z=-0.05, width = 4,length=0.08 , heigth=0.08, angle=70)
-        self.viga_a_e_4 = Parallelepiped(x=-10.40, y = 5, z=-0.05, width = 3.5,length=0.08 , heigth=0.08, angle=45)
-        
-        self.viga_a_d_1 = Parallelepiped(x=10.60, y = 5, z=-0.05, width = 2.7,length=0.08 , heigth=0.08, angle=65)
-        self.viga_a_d_2 = Parallelepiped(x=10.60, y = 5, z=-0.05, width = 3.0,length=0.08 , heigth=0.08, angle=82.5)
-        self.viga_a_d_3 = Parallelepiped(x=10.60, y = 5, z=-0.05, width = 4,length=0.08 , heigth=0.08, angle=110)
-        self.viga_a_d_4 = Parallelepiped(x=10.60, y = 5, z=-0.05, width = 3.5,length=0.08 , heigth=0.08, angle=135)
-=======
+
         self.viga_a_e_1 = Parallelepiped(x=-10.40, y = 5, z=-0.05, width = 2.93, length=0.08, heigth=0.08, angle=115)
         self.viga_a_e_2 = Parallelepiped(x=-10.40, y = 5, z=-0.05, width = 3.0, length=0.08, heigth=0.08, angle=97.5)
         self.viga_a_e_3 = Parallelepiped(x=-10.40, y = 5, z=-0.05, width = 3.8, length=0.08, heigth=0.08, angle=70)
@@ -52,8 +42,6 @@ class Portico:
         self.viga_a_d_2 = Parallelepiped(x=10.60, y = 5, z=-0.05, width = 3.0,length=0.08, heigth=0.08, angle=82.5)
         self.viga_a_d_3 = Parallelepiped(x=10.60, y = 5, z=-0.05, width = 3.8,length=0.08, heigth=0.08, angle=110)
         self.viga_a_d_4 = Parallelepiped(x=10.60, y = 5, z=-0.05, width = 3.6,length=0.08, heigth=0.08, angle=135)
-
->>>>>>> Stashed changes
         
         self.viga_p_f = Parallelepiped(x= 0, y = 7.47, z=-0.05, width = 0.08 , length=0.08 , heigth=2.55)
         self.viga_p_e_f = Parallelepiped(x=-7.92, y = 7.47, z=-0.05, width = 7.92,length=0.08 , heigth=0.08)
@@ -64,12 +52,7 @@ class Portico:
 
         self.viga_p_a_d_1 = Parallelepiped(x=0.08, y = 7.54, z=-0.05, width = 8.2, length=0.08, heigth=0.08, angle=170)
         self.viga_p_a_d_2 = Parallelepiped(x=0.08, y = 7.54, z=-0.05, width = 4.1, length=0.08, heigth=0.08, angle=145)
-
         
-<<<<<<< Updated upstream
-        self.coluna_s_e_f = Parallelepiped(x=-7.92, y = 7.47, z=-0.05, width = 0.08, length=0.08, heigth=1.8)
-        self.coluna_s_d_f = Parallelepiped(x=7.92, y = 7.47, z=-0.05, width = 0.08, length=0.08, heigth=1.8)
-=======
         self.coluna_s_e_f = Parallelepiped(x=-7.92, y = 7.47, z=-0.05, width = 0.08, length=0.08, heigth=1.5)
         self.coluna_s_d_f = Parallelepiped(x=7.97, y = 7.47, z=-0.05, width = 0.08, length=0.08, heigth=1.5)
 
@@ -97,7 +80,6 @@ class Portico:
         self.viga_a_d_m_2 = Parallelepiped(x=10.60, y = 5, z=-5.05, width = 3.0,length=0.08, heigth=0.08, angle=82.5)
         self.viga_a_d_m_3 = Parallelepiped(x=10.60, y = 5, z=-5.05, width = 3.8,length=0.08, heigth=0.08, angle=110)
         self.viga_a_d_m_4 = Parallelepiped(x=10.60, y = 5, z=-5.05, width = 3.6,length=0.08, heigth=0.08, angle=135)
-
         
         self.viga_p_m = Parallelepiped(x= 0, y = 7.47, z=-5.05, width = 0.08 , length=0.08 , heigth=2.55)
         self.viga_p_e_m = Parallelepiped(x=-7.92, y = 7.47, z=-5.05, width = 7.92,length=0.08 , heigth=0.08)
@@ -109,7 +91,6 @@ class Portico:
         self.viga_p_a_d_m_1 = Parallelepiped(x=0.08, y = 7.54, z=-5.05, width = 8.2, length=0.08, heigth=0.08, angle=170)
         self.viga_p_a_d_m_2 = Parallelepiped(x=0.08, y = 7.54, z=-5.05, width = 4.1, length=0.08, heigth=0.08, angle=145)
 
-        
         self.coluna_s_e_m = Parallelepiped(x=-7.92, y = 7.47, z=-5.05, width = 0.08, length=0.08, heigth=1.5)
         self.coluna_s_d_m = Parallelepiped(x=7.97, y = 7.47, z=-5.05, width = 0.08, length=0.08, heigth=1.5)
 
@@ -132,13 +113,11 @@ class Portico:
         self.viga_a_e_t_2 = Parallelepiped(x=-10.40, y = 5, z=-10.05, width = 3.0, length=0.08, heigth=0.08, angle=97.5)
         self.viga_a_e_t_3 = Parallelepiped(x=-10.40, y = 5, z=-10.05, width = 3.8, length=0.08, heigth=0.08, angle=70)
         self.viga_a_e_t_4 = Parallelepiped(x=-10.40, y = 5, z=-10.05, width = 3.6, length=0.08, heigth=0.08, angle=45)
->>>>>>> Stashed changes
         
         self.viga_a_d_t_1 = Parallelepiped(x=10.60, y = 5, z=-10.05, width = 2.93,length=0.08, heigth=0.08, angle=65)
         self.viga_a_d_t_2 = Parallelepiped(x=10.60, y = 5, z=-10.05, width = 3.0,length=0.08, heigth=0.08, angle=82.5)
         self.viga_a_d_t_3 = Parallelepiped(x=10.60, y = 5, z=-10.05, width = 3.8,length=0.08, heigth=0.08, angle=110)
         self.viga_a_d_t_4 = Parallelepiped(x=10.60, y = 5, z=-10.05, width = 3.6,length=0.08, heigth=0.08, angle=135)
-
         
         self.viga_p_t = Parallelepiped(x= 0, y = 7.47, z=-10.05, width = 0.08 , length=0.08 , heigth=2.55)
         self.viga_p_e_t = Parallelepiped(x=-7.92, y = 7.47, z=-10.05, width = 7.92,length=0.08 , heigth=0.08)
@@ -149,7 +128,6 @@ class Portico:
 
         self.viga_p_a_d_t_1 = Parallelepiped(x=0.08, y = 7.54, z=-10.05, width = 8.2, length=0.08, heigth=0.08, angle=170)
         self.viga_p_a_d_t_2 = Parallelepiped(x=0.08, y = 7.54, z=-10.05, width = 4.1, length=0.08, heigth=0.08, angle=145)
-
         
         self.coluna_s_e_t = Parallelepiped(x=-7.92, y = 7.47, z=-10.05, width = 0.08, length=0.08, heigth=1.5)
         self.coluna_s_d_t = Parallelepiped(x=7.97, y = 7.47, z=-10.05, width = 0.08, length=0.08, heigth=1.5)
@@ -248,8 +226,6 @@ class Portico:
                 
                 self.coluna_s_d_f.draw()
                 self.coluna_s_e_f.draw()
-<<<<<<< Updated upstream
-=======
 
                 self.arco_principal_frente.draw()
 
@@ -266,7 +242,6 @@ class Portico:
                 self.viga_a_e_m_2.draw()
                 self.viga_a_e_m_3.draw()
                 self.viga_a_e_m_4.draw()
->>>>>>> Stashed changes
                 
                 self.viga_a_d_m_1.draw()
                 self.viga_a_d_m_2.draw()
