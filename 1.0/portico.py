@@ -36,25 +36,27 @@ class Portico:
         self.viga_a_e_1 = Parallelepiped(x=-10.40, y = 5, z=-0.05, width = 2.93, length=0.08, heigth=0.08, angle=115)
         self.viga_a_e_2 = Parallelepiped(x=-10.40, y = 5, z=-0.05, width = 3.0, length=0.08, heigth=0.08, angle=97.5)
         self.viga_a_e_3 = Parallelepiped(x=-10.40, y = 5, z=-0.05, width = 3.8, length=0.08, heigth=0.08, angle=70)
-        self.viga_a_e_4 = Parallelepiped(x=-10.40, y = 5, z=-0.05, width = 3.6, length=0.08, heigth=0.08, angle=45)
+        self.viga_a_e_4 = Parallelepiped(x=-10.40, y = 5, z=-0.05, width = 6.4, length=0.08, heigth=0.08, angle=45)
         
         self.viga_a_d_1 = Parallelepiped(x=10.60, y = 5, z=-0.05, width = 2.93,length=0.08, heigth=0.08, angle=65)
         self.viga_a_d_2 = Parallelepiped(x=10.60, y = 5, z=-0.05, width = 3.0,length=0.08, heigth=0.08, angle=82.5)
         self.viga_a_d_3 = Parallelepiped(x=10.60, y = 5, z=-0.05, width = 3.8,length=0.08, heigth=0.08, angle=110)
-        self.viga_a_d_4 = Parallelepiped(x=10.60, y = 5, z=-0.05, width = 3.6,length=0.08, heigth=0.08, angle=135)
+        self.viga_a_d_4 = Parallelepiped(x=10.60, y = 5, z=-0.05, width = 6.4,length=0.08, heigth=0.08, angle=135)
         
         self.viga_p_f = Parallelepiped(x= 0, y = 7.47, z=-0.05, width = 0.08 , length=0.08 , heigth=2.55)
         self.viga_p_e_f = Parallelepiped(x=-7.92, y = 7.47, z=-0.05, width = 7.92,length=0.08 , heigth=0.08)
         self.viga_p_d_f = Parallelepiped(x= 0, y = 7.47, z=-0.05, width = 8.08 , length=0.08 , heigth=0.08)
 
-        self.viga_p_a_e_1 = Parallelepiped(x=0, y = 7.47, z=-0.05, width = 8.2, length=0.08, heigth=0.08, angle=10)
+        self.viga_p_a_e_1 = Parallelepiped(x=0, y = 7.47, z=-0.05, width = 6.4, length=0.08, heigth=0.08, angle=17.5)
         self.viga_p_a_e_2 = Parallelepiped(x=0, y = 7.47, z=-0.05, width = 4.1, length=0.08, heigth=0.08, angle=35)
 
-        self.viga_p_a_d_1 = Parallelepiped(x=0.08, y = 7.54, z=-0.05, width = 8.2, length=0.08, heigth=0.08, angle=170)
+        self.viga_p_a_d_1 = Parallelepiped(x=0.08, y = 7.54, z=-0.05, width = 6.4, length=0.08, heigth=0.08, angle=162.5)
         self.viga_p_a_d_2 = Parallelepiped(x=0.08, y = 7.54, z=-0.05, width = 4.1, length=0.08, heigth=0.08, angle=145)
         
-        self.coluna_s_e_f = Parallelepiped(x=-7.92, y = 7.47, z=-0.05, width = 0.08, length=0.08, heigth=1.5)
-        self.coluna_s_d_f = Parallelepiped(x=7.97, y = 7.47, z=-0.05, width = 0.08, length=0.08, heigth=1.5)
+        self.coluna_s_e_f_1 = Parallelepiped(x=-7.92, y = 7.47, z=-0.05, width = 0.08, length=0.08, heigth=1.5)
+        self.coluna_s_d_f_1 = Parallelepiped(x=7.97, y = 7.47, z=-0.05, width = 0.08, length=0.08, heigth=1.5)
+        self.coluna_s_e_f_2 = Parallelepiped(x=-5.82, y = 7.47, z=-0.05, width = 0.08, length=0.08, heigth=2)
+        self.coluna_s_d_f_2 = Parallelepiped(x=6.07, y = 7.47, z=-0.05, width = 0.08, length=0.08, heigth=2)
 
         self.arco_principal_frente = Arc(x=0, y=10, initial_angle=65, final_angle=115, radius = 30, width=.5, heigth=.08, length=.08)
 
@@ -74,25 +76,28 @@ class Portico:
         self.viga_a_e_m_1 = Parallelepiped(x=-10.40, y = 5, z=-5.05, width = 2.93, length=0.08, heigth=0.08, angle=115)
         self.viga_a_e_m_2 = Parallelepiped(x=-10.40, y = 5, z=-5.05, width = 3.0, length=0.08, heigth=0.08, angle=97.5)
         self.viga_a_e_m_3 = Parallelepiped(x=-10.40, y = 5, z=-5.05, width = 3.8, length=0.08, heigth=0.08, angle=70)
-        self.viga_a_e_m_4 = Parallelepiped(x=-10.40, y = 5, z=-5.05, width = 3.6, length=0.08, heigth=0.08, angle=45)
+        self.viga_a_e_m_4 = Parallelepiped(x=-10.40, y = 5, z=-5.05, width = 6.4, length=0.08, heigth=0.08, angle=45)
         
         self.viga_a_d_m_1 = Parallelepiped(x=10.60, y = 5, z=-5.05, width = 2.93,length=0.08, heigth=0.08, angle=65)
         self.viga_a_d_m_2 = Parallelepiped(x=10.60, y = 5, z=-5.05, width = 3.0,length=0.08, heigth=0.08, angle=82.5)
         self.viga_a_d_m_3 = Parallelepiped(x=10.60, y = 5, z=-5.05, width = 3.8,length=0.08, heigth=0.08, angle=110)
-        self.viga_a_d_m_4 = Parallelepiped(x=10.60, y = 5, z=-5.05, width = 3.6,length=0.08, heigth=0.08, angle=135)
+        self.viga_a_d_m_4 = Parallelepiped(x=10.60, y = 5, z=-5.05, width = 6.4,length=0.08, heigth=0.08, angle=135)
         
         self.viga_p_m = Parallelepiped(x= 0, y = 7.47, z=-5.05, width = 0.08 , length=0.08 , heigth=2.55)
         self.viga_p_e_m = Parallelepiped(x=-7.92, y = 7.47, z=-5.05, width = 7.92,length=0.08 , heigth=0.08)
         self.viga_p_d_m = Parallelepiped(x= 0, y = 7.47, z=-5.05, width = 8.08 , length=0.08 , heigth=0.08)
 
-        self.viga_p_a_e_m_1 = Parallelepiped(x=0, y = 7.47, z=-5.05, width = 8.2, length=0.08, heigth=0.08, angle=10)
+        self.viga_p_a_e_m_1 = Parallelepiped(x=0, y = 7.47, z=-5.05, width = 6.4, length=0.08, heigth=0.08, angle=17.5)
         self.viga_p_a_e_m_2 = Parallelepiped(x=0, y = 7.47, z=-5.05, width = 4.1, length=0.08, heigth=0.08, angle=35)
 
-        self.viga_p_a_d_m_1 = Parallelepiped(x=0.08, y = 7.54, z=-5.05, width = 8.2, length=0.08, heigth=0.08, angle=170)
+        self.viga_p_a_d_m_1 = Parallelepiped(x=0.08, y = 7.54, z=-5.05, width = 6.4, length=0.08, heigth=0.08, angle=162.5)
         self.viga_p_a_d_m_2 = Parallelepiped(x=0.08, y = 7.54, z=-5.05, width = 4.1, length=0.08, heigth=0.08, angle=145)
 
-        self.coluna_s_e_m = Parallelepiped(x=-7.92, y = 7.47, z=-5.05, width = 0.08, length=0.08, heigth=1.5)
-        self.coluna_s_d_m = Parallelepiped(x=7.97, y = 7.47, z=-5.05, width = 0.08, length=0.08, heigth=1.5)
+        self.coluna_s_e_m_1 = Parallelepiped(x=-7.92, y = 7.47, z=-5.05, width = 0.08, length=0.08, heigth=1.5)
+        self.coluna_s_d_m_1 = Parallelepiped(x=7.97, y = 7.47, z=-5.05, width = 0.08, length=0.08, heigth=1.5)
+        self.coluna_s_e_m_2 = Parallelepiped(x=-5.82, y = 7.47, z=-5.05, width = 0.08, length=0.08, heigth=2)
+        self.coluna_s_d_m_2 = Parallelepiped(x=6.07, y = 7.47, z=-5.05, width = 0.08, length=0.08, heigth=2)
+
 
         self.arco_principal_meio = Arc(x=0, y=10, z = -5, initial_angle=65, final_angle=115, radius = 30, width=.5, heigth=.08, length=.08)
 
@@ -112,25 +117,27 @@ class Portico:
         self.viga_a_e_t_1 = Parallelepiped(x=-10.40, y = 5, z=-10.05, width = 2.93, length=0.08, heigth=0.08, angle=115)
         self.viga_a_e_t_2 = Parallelepiped(x=-10.40, y = 5, z=-10.05, width = 3.0, length=0.08, heigth=0.08, angle=97.5)
         self.viga_a_e_t_3 = Parallelepiped(x=-10.40, y = 5, z=-10.05, width = 3.8, length=0.08, heigth=0.08, angle=70)
-        self.viga_a_e_t_4 = Parallelepiped(x=-10.40, y = 5, z=-10.05, width = 3.6, length=0.08, heigth=0.08, angle=45)
+        self.viga_a_e_t_4 = Parallelepiped(x=-10.40, y = 5, z=-10.05, width = 6.4, length=0.08, heigth=0.08, angle=45)
         
         self.viga_a_d_t_1 = Parallelepiped(x=10.60, y = 5, z=-10.05, width = 2.93,length=0.08, heigth=0.08, angle=65)
         self.viga_a_d_t_2 = Parallelepiped(x=10.60, y = 5, z=-10.05, width = 3.0,length=0.08, heigth=0.08, angle=82.5)
         self.viga_a_d_t_3 = Parallelepiped(x=10.60, y = 5, z=-10.05, width = 3.8,length=0.08, heigth=0.08, angle=110)
-        self.viga_a_d_t_4 = Parallelepiped(x=10.60, y = 5, z=-10.05, width = 3.6,length=0.08, heigth=0.08, angle=135)
+        self.viga_a_d_t_4 = Parallelepiped(x=10.60, y = 5, z=-10.05, width = 6.4,length=0.08, heigth=0.08, angle=135)
         
         self.viga_p_t = Parallelepiped(x= 0, y = 7.47, z=-10.05, width = 0.08 , length=0.08 , heigth=2.55)
         self.viga_p_e_t = Parallelepiped(x=-7.92, y = 7.47, z=-10.05, width = 7.92,length=0.08 , heigth=0.08)
         self.viga_p_d_t = Parallelepiped(x= 0, y = 7.47, z=-10.05, width = 8.08 , length=0.08 , heigth=0.08)
 
-        self.viga_p_a_e_t_1 = Parallelepiped(x=0, y = 7.47, z=-10.05, width = 8.2, length=0.08, heigth=0.08, angle=10)
+        self.viga_p_a_e_t_1 = Parallelepiped(x=0, y = 7.47, z=-10.05, width = 6.4, length=0.08, heigth=0.08, angle=17.5)
         self.viga_p_a_e_t_2 = Parallelepiped(x=0, y = 7.47, z=-10.05, width = 4.1, length=0.08, heigth=0.08, angle=35)
 
-        self.viga_p_a_d_t_1 = Parallelepiped(x=0.08, y = 7.54, z=-10.05, width = 8.2, length=0.08, heigth=0.08, angle=170)
+        self.viga_p_a_d_t_1 = Parallelepiped(x=0.08, y = 7.54, z=-10.05, width = 6.4, length=0.08, heigth=0.08, angle=162.5)
         self.viga_p_a_d_t_2 = Parallelepiped(x=0.08, y = 7.54, z=-10.05, width = 4.1, length=0.08, heigth=0.08, angle=145)
         
-        self.coluna_s_e_t = Parallelepiped(x=-7.92, y = 7.47, z=-10.05, width = 0.08, length=0.08, heigth=1.5)
-        self.coluna_s_d_t = Parallelepiped(x=7.97, y = 7.47, z=-10.05, width = 0.08, length=0.08, heigth=1.5)
+        self.coluna_s_e_t_1 = Parallelepiped(x=-7.92, y = 7.47, z=-10.05, width = 0.08, length=0.08, heigth=1.5)
+        self.coluna_s_d_t_1 = Parallelepiped(x=7.97, y = 7.47, z=-10.05, width = 0.08, length=0.08, heigth=1.5)
+        self.coluna_s_e_t_2 = Parallelepiped(x=-5.82, y = 7.47, z=-10.05, width = 0.08, length=0.08, heigth=2)
+        self.coluna_s_d_t_2 = Parallelepiped(x=6.07, y = 7.47, z=-10.05, width = 0.08, length=0.08, heigth=2)
 
         self.arco_principal_tras = Arc(x=0, y=10, z = -10, initial_angle=65, final_angle=115, radius = 30, width=.5, heigth=.08, length=.08)
 
@@ -161,7 +168,7 @@ class Portico:
         try:
             # glLoadIdentity()
             # glTranslatef(0.0, 0.0, -15)
-            gluLookAt(0, 13, 15, 0, 0, 0, 0, 1, 0)
+            gluLookAt(0, 0, 15, 0, 0, 0, 0, 1, 0)
             
             #self.Parallelepiped.scale(1)
             
@@ -224,8 +231,10 @@ class Portico:
                 self.viga_p_a_d_1.draw()
                 self.viga_p_a_d_2.draw()
                 
-                self.coluna_s_d_f.draw()
-                self.coluna_s_e_f.draw()
+                self.coluna_s_d_f_1.draw()
+                self.coluna_s_e_f_1.draw()
+                self.coluna_s_d_f_2.draw()
+                self.coluna_s_e_f_2.draw()
 
                 self.arco_principal_frente.draw()
 
@@ -257,8 +266,10 @@ class Portico:
                 self.viga_p_a_d_m_1.draw()
                 self.viga_p_a_d_m_2.draw()
                 
-                self.coluna_s_d_m.draw()
-                self.coluna_s_e_m.draw()
+                self.coluna_s_d_m_1.draw()
+                self.coluna_s_e_m_1.draw()
+                self.coluna_s_d_m_2.draw()
+                self.coluna_s_e_m_2.draw()
 
                 self.arco_principal_meio.draw()
 
@@ -290,8 +301,10 @@ class Portico:
                 self.viga_p_a_d_t_1.draw()
                 self.viga_p_a_d_t_2.draw()
                 
-                self.coluna_s_d_t.draw()
-                self.coluna_s_e_t.draw()
+                self.coluna_s_d_t_1.draw()
+                self.coluna_s_e_t_1.draw()
+                self.coluna_s_d_t_2.draw()
+                self.coluna_s_e_t_2.draw()
 
                 self.arco_principal_tras.draw()
 
