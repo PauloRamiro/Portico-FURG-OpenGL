@@ -6,6 +6,7 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 from shapes.parallelepiped import *
 from shapes.cylinder import *
+from shapes.arc import *
 from transforms import Transforms as T
 
 '''
@@ -35,22 +36,27 @@ class Portico:
         self.pilar_esquerdo_tras = Cylinder(x=-10.5, z=-10, radius=.1, heigth=5)
         self.pilar_direito_tras = Cylinder(x=10.5, z=-10, radius=.1, heigth=5)
         
-        self.viga_a_e_1 = Parallelepiped(x=-10.40, y = 5, z=-0.05, width = 2.7,length=0.08 , heigth=0.08, angle=115)
-        self.viga_a_e_2 = Parallelepiped(x=-10.40, y = 5, z=-0.05, width = 3.0,length=0.08 , heigth=0.08, angle=97.5)
-        self.viga_a_e_3 = Parallelepiped(x=-10.40, y = 5, z=-0.05, width = 4,length=0.08 , heigth=0.08, angle=70)
-        self.viga_a_e_4 = Parallelepiped(x=-10.40, y = 5, z=-0.05, width = 3.5,length=0.08 , heigth=0.08, angle=45)
+        self.viga_a_e_1 = Parallelepiped(x=-10.40, y = 5, z=-0.05, width = 2.95,length=0.08 , heigth=0.08, angle=115)
+        self.viga_a_e_2 = Parallelepiped(x=-10.40, y = 5, z=-0.05, width = 3.05,length=0.08 , heigth=0.08, angle=97.5)
+        self.viga_a_e_3 = Parallelepiped(x=-10.40, y = 5, z=-0.05, width = 3.85,length=0.08 , heigth=0.08, angle=70)
+        self.viga_a_e_4 = Parallelepiped(x=-10.40, y = 5, z=-0.05, width = 3.55,length=0.08 , heigth=0.08, angle=45)
         
-        self.viga_a_d_1 = Parallelepiped(x=10.60, y = 5, z=-0.05, width = 2.7,length=0.08 , heigth=0.08, angle=65)
-        self.viga_a_d_2 = Parallelepiped(x=10.60, y = 5, z=-0.05, width = 3.0,length=0.08 , heigth=0.08, angle=82.5)
-        self.viga_a_d_3 = Parallelepiped(x=10.60, y = 5, z=-0.05, width = 4,length=0.08 , heigth=0.08, angle=110)
-        self.viga_a_d_4 = Parallelepiped(x=10.60, y = 5, z=-0.05, width = 3.5,length=0.08 , heigth=0.08, angle=135)
+        self.viga_a_d_1 = Parallelepiped(x=10.60, y = 5, z=-0.05, width = 2.95,length=0.08 , heigth=0.08, angle=65)
+        self.viga_a_d_2 = Parallelepiped(x=10.60, y = 5, z=-0.05, width = 3.05,length=0.08 , heigth=0.08, angle=82.5)
+        self.viga_a_d_3 = Parallelepiped(x=10.60, y = 5, z=-0.05, width = 3.85,length=0.08 , heigth=0.08, angle=110)
+        self.viga_a_d_4 = Parallelepiped(x=10.60, y = 5, z=-0.05, width = 3.55,length=0.08 , heigth=0.08, angle=135)
         
         self.viga_p_f = Parallelepiped(x= 0, y = 7.47, z=-0.05, width = 0.08 , length=0.08 , heigth=2.5)
         self.viga_p_e_f = Parallelepiped(x=-7.92, y = 7.47, z=-0.05, width = 7.92,length=0.08 , heigth=0.08)
         self.viga_p_d_f = Parallelepiped(x= 0, y = 7.47, z=-0.05, width = 8.08 , length=0.08 , heigth=0.08)
         
-        self.coluna_s_e_f = Parallelepiped(x=-7.92, y = 7.47, z=-0.05, width = 0.08, length=0.08, heigth=1.8)
-        self.coluna_s_d_f = Parallelepiped(x=7.92, y = 7.47, z=-0.05, width = 0.08, length=0.08, heigth=1.8)
+        self.coluna_s_e_f = Parallelepiped(x=-7.92, y = 7.47, z=-0.05, width = 0.08, length=0.08, heigth=1.5)
+        self.coluna_s_d_f = Parallelepiped(x=7.92, y = 7.47, z=-0.05, width = 0.08, length=0.08, heigth=1.5)
+
+        self.test = Arc(x=0, y=10, initial_angle=65, final_angle=115, radius = 30, width=.5, heigth=.08, length=.08)
+        self.test1 = Arc(x=-2.08, y=7.7, initial_angle=47.5, final_angle=65.5, radius = 30, width=.4, heigth=.08, length=.08)
+        self.test2 = Arc(x=-2.1, y=7.1, initial_angle=49, final_angle=65, radius = 30, width=.4, heigth=.08, length=.08)
+        self.test3 = Arc(x=-2.1, y=7.1, initial_angle=49, final_angle=65, radius = 30, width=.08, heigth=.55, length=.08, segments = 360)
         
         
         gluPerspective(90, (display[0]/display[1]), 0.1, 100.0)
@@ -123,6 +129,11 @@ class Portico:
                 
                 self.coluna_s_d_f.draw()
                 self.coluna_s_e_f.draw()
+
+                self.test.draw()
+                self.test1.draw()
+                self.test2.draw()
+                self.test3.draw()
                 
                 
                 pygame.display.flip()
