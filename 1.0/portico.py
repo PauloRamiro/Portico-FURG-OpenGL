@@ -153,7 +153,7 @@ class Portico:
         self.arco_principal_teto = Arc(x=0, y=10.1, z=0.5, initial_angle=64.5, final_angle=115.5, radius = 30, width=.5, heigth=.08, length=-16)
 
         self.arco_lateral_direita_teto = Arc(x=-1.92, y=7.8, z=0.5,  initial_angle=48.25, final_angle=65.65, radius = 30, width=.4, heigth=.08, length=-16)
-        
+        #ARRUMAR ISSO AQUI
         self.arco_lateral_esquerda_teto = Arc(x=2.08, y=7.8, z=0.5,  initial_angle=115.5, final_angle=132.25, radius = 30, width=.4, heigth=.08, length=-16)
 
 #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-        

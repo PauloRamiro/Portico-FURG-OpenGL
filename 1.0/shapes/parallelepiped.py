@@ -132,7 +132,7 @@ class Parallelepiped(Transforms):
             for surface in surfaces:
                 glNormal3fv(normals[surfaces.index(surface)])
                 for point in surface:
-                    print(f'Point -> {point}. Surface -> {surface}.')
+                    # print(f'Point -> {point}. Surface -> {surface}.')
                     glVertex3fv(points[point])
             
             glEnd()
