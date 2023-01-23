@@ -25,15 +25,56 @@ class Parallelepiped(Transforms):
         self.objectScale = scale
         self.angle = math.radians(angle)
         
+        x_0 = ((self.x + (self.width * math.cos(self.angle))) * self.objectScale)
+        y_0 = ((self.y + (self.width * math.sin(self.angle))) * self.objectScale)
+        z_0 = ((self.z) * self.objectScale)
+        
+        x_1 = ((self.x + (self.width * math.cos(self.angle) - (self.heigth * math.sin(self.angle)))) * self.objectScale)
+        y_1 = ((self.y + (self.heigth * math.cos(self.angle) + (self.width * math.sin(self.angle)))) * self.objectScale)
+        z_1 = ((self.z) * self.objectScale)
+        
+        x_2 = ((self.x - (self.heigth * math.sin(self.angle))) * self.objectScale)
+        y_2 = ((self.y + (self.heigth * math.cos(self.angle))) * self.objectScale)
+        z_2 = ((self.z) * self.objectScale)
+        
+        x_3 = ((self.x) * self.objectScale)
+        y_3 = ((self.y) * self.objectScale)
+        z_3 = ((self.z) * self.objectScale)
+        
+        x_4 = ((self.x + (self.width * math.cos(self.angle))) * self.objectScale)
+        y_4 = ((self.y + (self.width * math.sin(self.angle))) * self.objectScale)
+        z_4 = ((self.z + self.length) * self.objectScale)
+        
+        x_5 = ((self.x + (self.width * math.cos(self.angle) - (self.heigth * math.sin(self.angle)))) * self.objectScale)
+        y_5 = ((self.y + (self.heigth * math.cos(self.angle) + (self.width * math.sin(self.angle)))) * self.objectScale)
+        z_5 = ((self.z + self.length) * self.objectScale)
+        
+        x_6 = ((self.x) * self.objectScale)
+        y_6 = ((self.y) * self.objectScale)
+        z_6 = ((self.z + self.length) * self.objectScale)
+        
+        x_7 = ((self.x - (self.heigth * math.sin(self.angle))) * self.objectScale)
+        y_7 = ((self.y + (self.heigth * math.cos(self.angle))) * self.objectScale)
+        z_7 = ((self.z + self.length) * self.objectScale)
+        
         self.points = [
-            [((self.x + (self.width * math.cos(self.angle))) * self.objectScale), ((self.y + (self.width * math.sin(self.angle))) * self.objectScale),((self.z) * self.objectScale)], #Ponto 100
-            [((self.x + (self.width * math.cos(self.angle) - (self.heigth * math.sin(self.angle)))) * self.objectScale), ((self.y + (self.heigth * math.cos(self.angle) + (self.width * math.sin(self.angle)))) * self.objectScale), ((self.z) * self.objectScale)], #Ponto 110
-            [((self.x - (self.heigth * math.sin(self.angle))) * self.objectScale), ((self.y + (self.heigth * math.cos(self.angle))) * self.objectScale), ((self.z) * self.objectScale)], # Ponto 010
-            [((self.x) * self.objectScale), ((self.y) * self.objectScale), ((self.z) * self.objectScale)], # Ponto 000
-            [((self.x + (self.width * math.cos(self.angle))) * self.objectScale), ((self.y + (self.width * math.sin(self.angle))) * self.objectScale), ((self.z + self.length) * self.objectScale)], # Ponto 101
-            [((self.x + (self.width * math.cos(self.angle) - (self.heigth * math.sin(self.angle)))) * self.objectScale), ((self.y + (self.heigth * math.cos(self.angle) + (self.width * math.sin(self.angle)))) * self.objectScale), ((self.z + self.length) * self.objectScale)], # Ponto 111
-            [((self.x) * self.objectScale), ((self.y) * self.objectScale), ((self.z + self.length) * self.objectScale)], # Ponto 001 
-            [((self.x - (self.heigth * math.sin(self.angle))) * self.objectScale), ((self.y + (self.heigth * math.cos(self.angle))) * self.objectScale), ((self.z + self.length) * self.objectScale)], # Ponto 011
+            [x_0, y_0, z_0], #Ponto 100
+            [x_1, y_1, z_1], #Ponto 110
+            [x_2, y_2, z_2], # Ponto 010
+            [x_3, y_3, z_3], # Ponto 000
+            [x_4, y_4, z_4], # Ponto 101
+            [x_5, y_5, z_5], # Ponto 111
+            [x_6, y_6, z_6], # Ponto 001 
+            [x_7, y_7, z_7], # Ponto 011
+        ]
+        
+        self.normals = [
+            [(x_3 + (self.width/2)), (y_3 + (self.heigth/2)), (z_3 + 1)],
+            [(x_3 - 1), (y_3 + (self.heigth/2)), (z_3 + (self.length/2))],
+            [(x_3 + (self.width/2)), (y_3 + self.heigth/2), (z_3 + self.length/2)],
+            [(x_3 + self.width + 1), (y_3 + (self.heigth/2)), (z_3 + (self.length/2))],
+            [(x_3 + (self.width/2)), (y_3 + self.heigth + 1), (z_3 + (self.length/2))],
+            [(x_3 + (self.width/2)), (y_3 - 1), ( z_3 + (self.length/2))],
         ]
         
         self.edges = [
@@ -82,14 +123,16 @@ class Parallelepiped(Transforms):
     * Método para desenhar as superfícies;
     ** Lista de pontos que se conectam para formar uma superfície;
     '''  
-    def create_surfaces(self, points, surfaces) -> None:
+    def create_surfaces(self, points, surfaces, normals) -> None:
         try:
             glBegin(GL_QUADS)
             
             glColor3fv((0, 1, 0))
             
             for surface in surfaces:
+                glNormal3fv(normals[surfaces.index(surface)])
                 for point in surface:
+                    print(f'Point -> {point}. Surface -> {surface}.')
                     glVertex3fv(points[point])
             
             glEnd()
@@ -101,7 +144,7 @@ class Parallelepiped(Transforms):
     '''
     def draw(self) -> None:
         try:
-            self.create_surfaces(self.points, self.surfaces)
+            self.create_surfaces(self.points, self.surfaces, self.normals)
             
             self.connect_points(self.points, self.edges)
             
