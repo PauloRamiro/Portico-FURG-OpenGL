@@ -195,7 +195,7 @@ class Portico:
                 specReflection = [0.5, 0.5, 0.5, 0.5]
                 glMaterialfv(GL_FRONT, GL_SPECULAR, specReflection)
                 glMateriali(GL_FRONT, GL_SHININESS, 30)
-                glLightfv(GL_LIGHT0, GL_POSITION,[8, 10, -5, 10])
+                glLightfv(GL_LIGHT0, GL_POSITION, [8, 10, -5, 10])
                 
                 self.guarita.draw()
                 self.guarita_p_e_f.draw()
