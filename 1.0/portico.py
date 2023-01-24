@@ -171,18 +171,12 @@ class Portico:
     '''
     def main(self) -> None:
         try:
-            # glLoadIdentity()
-            # glTranslatef(0.0, 0.0, -15)
             gluLookAt(0, 10.0, 15, 0, 0, 0, 0, 1, 0)
             
-            #self.Parallelepiped.scale(1)
-            
-            # self.cylender.scale(2)
-            
             while True:
+                
                 self.handle_events()
-
-                # self.Parallelepiped.rotate(1, 1, 1, 1)
+                
                 
                 glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
                 glEnable(GL_DEPTH_TEST)
@@ -195,7 +189,7 @@ class Portico:
                 
                 glDepthFunc(GL_LEQUAL)
                 glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
-                glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST)
+                #glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST)
                 
                 light_ambient = [0.5, 0.5, 0.5, 1]
                 light_diffuse = [1, 1, 1, 1]
@@ -209,19 +203,11 @@ class Portico:
                 mat_a = [0.5, 0.5, 0.5, .5]
                 mat_d = [0.5, 0.5, 0.5, .5]
                 mat_s = [1.0, 1.0, 1.0, .5]
-                low_sh = [100.0]
+                low_sh = [60.0]
                 glMaterialfv(GL_FRONT, GL_AMBIENT, mat_a)
                 glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_d)
                 glMaterialfv(GL_FRONT, GL_SPECULAR, mat_s)
                 glMaterialfv(GL_FRONT, GL_SHININESS, low_sh)
-               
-                # glShadeModel(GL_SMOOTH)
-
-                # glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE)
-                # specReflection = [0.5, 0.5, 0.5, 0.5]
-                # glMaterialfv(GL_FRONT, GL_SPECULAR, specReflection)
-                # glMateriali(GL_FRONT, GL_SHININESS, 30)
-                # glLightfv(GL_LIGHT0, GL_POSITION, [8, 10, -5, 10])
                 
                 self.guarita.draw()
                 self.guarita_p_e_f.draw()
