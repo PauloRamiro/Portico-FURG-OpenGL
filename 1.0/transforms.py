@@ -27,7 +27,7 @@ class Transforms:
                 [x * scale, 0.0, 0.0, 0.0],
                 [0.0, y * scale, 0.0, 0.0],
                 [0.0, 0.0, z * scale, 0.0],
-                [0.0, 0.0, 0.0, 1.0]
+                [0.0, 0.0, 0.0,       1.0]
             ]
             
             glMultMatrixf(matrix)

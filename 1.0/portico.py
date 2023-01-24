@@ -8,6 +8,7 @@ from shapes.parallelepiped import *
 from shapes.cylinder import *
 from shapes.arc import *
 from transforms import Transforms as T
+from projections import *
 
 '''
 * Classe principal
@@ -150,14 +151,18 @@ class Portico:
         self.arco_lateral_esquerda_tras_3 = Arc(x=2.1, y=7.1,  z = -10,initial_angle=115.25, final_angle=130.5, radius = 30, width=.08, heigth=.55, length=.08, segments = 360)
 
 #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- PARTE SUPERIOR -=-=-=--=-=-=-=-=-=-=-=-=-=--=-=-=-=--==-=-=--=-=-=--=-=-=-=-=--=-=--=-=-=-=-==-=-=-=--=
-        self.arco_principal_teto = Arc(x=0, y=10.1, z=0.5, initial_angle=64.5, final_angle=115.5, radius = 30, width=.5, heigth=.08, length=-16)
+        self.arco_principal_teto = Arc(x=0, y=10.1, z=0.5, initial_angle=64.5, final_angle=115.5, radius = 30, width=.5, heigth=.08, length=-16, color='green_transparent', color_border='green')
 
-        self.arco_lateral_direita_teto = Arc(x=-1.92, y=7.8, z=0.5,  initial_angle=48.25, final_angle=65.65, radius = 30, width=.4, heigth=.08, length=-16)
-        #ARRUMAR ISSO AQUI
-        self.arco_lateral_esquerda_teto = Arc(x=2.08, y=7.8, z=0.5,  initial_angle=115.5, final_angle=132.25, radius = 30, width=.4, heigth=.08, length=-16)
+        self.arco_lateral_direita_teto = Arc(x=-1.92, y=7.8, z=0.5,  initial_angle=53.5, final_angle=65.65, radius = 30, width=.4, heigth=.08, length=-16, color='green_transparent', color_border='green')
+        
+        self.arco_lateral_esquerda_teto = Arc(x=2.08, y=7.8, z=0.5,  initial_angle=115.5, final_angle=127.25, radius = 30, width=.4, heigth=.08, length=-16, color='green_transparent', color_border='green')
 
+        self.floor = Parallelepiped(x=-50, y=0, z=50, width=150, heigth=-2, length=-150, color='brown')
 #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-        
-        gluPerspective(90, (display[0]/display[1]), 0.1, 100.0)
+        # gluPerspective(90, (display[0]/display[1]), 0.1, 100.0)
+        
+        perspective(90, (display[0]/display[1]), 0.1, 100.0)
+        #ortho(-20, 20, -20, 20, 1.0, 25)
         
         self.main()
     
@@ -168,7 +173,7 @@ class Portico:
         try:
             # glLoadIdentity()
             # glTranslatef(0.0, 0.0, -15)
-            gluLookAt(0, 0, 15, 0, 0, 0, 0, 1, 0)
+            gluLookAt(0, 10.0, 15, 0, 0, 0, 0, 1, 0)
             
             #self.Parallelepiped.scale(1)
             
@@ -180,22 +185,43 @@ class Portico:
                 # self.Parallelepiped.rotate(1, 1, 1, 1)
                 
                 glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
+                glEnable(GL_DEPTH_TEST)
                 glEnable(GL_LIGHT0)
                 glEnable(GL_LIGHTING)
-
-                glEnable(GL_DEPTH_TEST)
-                glDepthFunc(GL_LEQUAL)
-                glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST)
-
-                glShadeModel(GL_SMOOTH)
-
+                glEnable(GL_NORMALIZE)
+                glEnable(GL_RESCALE_NORMAL)
                 glEnable(GL_COLOR_MATERIAL)
-                glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE)
-                glEnable(GL_TEXTURE_2D)
-                specReflection = [0.5, 0.5, 0.5, 0.5]
-                glMaterialfv(GL_FRONT, GL_SPECULAR, specReflection)
-                glMateriali(GL_FRONT, GL_SHININESS, 30)
-                glLightfv(GL_LIGHT0, GL_POSITION, [8, 10, -5, 10])
+                glEnable(GL_BLEND)
+                
+                glDepthFunc(GL_LEQUAL)
+                glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
+                glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST)
+                
+                light_ambient = [0.5, 0.5, 0.5, 1]
+                light_diffuse = [1, 1, 1, 1]
+                light_specular = [1, 1, 1, 1]
+                light_position = [0.0, 25.0, 15.0, 1]
+                glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient)
+                glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse)
+                glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular)
+                glLightfv(GL_LIGHT0, GL_POSITION, light_position)
+                
+                mat_a = [0.5, 0.5, 0.5, .5]
+                mat_d = [0.5, 0.5, 0.5, .5]
+                mat_s = [1.0, 1.0, 1.0, .5]
+                low_sh = [100.0]
+                glMaterialfv(GL_FRONT, GL_AMBIENT, mat_a)
+                glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_d)
+                glMaterialfv(GL_FRONT, GL_SPECULAR, mat_s)
+                glMaterialfv(GL_FRONT, GL_SHININESS, low_sh)
+               
+                # glShadeModel(GL_SMOOTH)
+
+                # glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE)
+                # specReflection = [0.5, 0.5, 0.5, 0.5]
+                # glMaterialfv(GL_FRONT, GL_SPECULAR, specReflection)
+                # glMateriali(GL_FRONT, GL_SHININESS, 30)
+                # glLightfv(GL_LIGHT0, GL_POSITION, [8, 10, -5, 10])
                 
                 self.guarita.draw()
                 self.guarita_p_e_f.draw()
@@ -321,6 +347,8 @@ class Portico:
                 self.arco_principal_teto.draw()
                 self.arco_lateral_esquerda_teto.draw()
                 self.arco_lateral_direita_teto.draw()
+                
+                self.floor.draw()
 
                 pygame.display.flip()
                 pygame.time.wait(10)
@@ -365,14 +393,14 @@ class Portico:
             if(self.mouse_is_cliked):
                 mouse_x, mouse_y = pygame.mouse.get_pos()
                 if(mouse_x > self.mouse_click_x):
-                    self.guarita.rotate(1, y=-1)
+                    self.guarita.rotate(2, y=-2)
                 elif(mouse_x < self.mouse_click_x):
-                    self.guarita.rotate(1, y=1)
+                    self.guarita.rotate(2, y=2)
                     
-                if(mouse_y > self.mouse_click_x):
-                    self.guarita.rotate(1, x=-1)
-                elif(mouse_x < self.mouse_click_x):
-                    self.guarita.rotate(1, x=1)
+                if(mouse_y > self.mouse_click_y):
+                    self.guarita.rotate(2, x=-2)
+                elif(mouse_y < self.mouse_click_y):
+                    self.guarita.rotate(2, x=2)
         except Exception as exception:
             raise Exception(f'Cannot handle event! Exception {exception}')
                 

@@ -11,7 +11,7 @@ from shapes.parallelepiped import *
 class Arc(Transforms):
     def __init__(self, x: float = 0.0, y: float = 0.0, z: float = 0.0, initial_angle = 0, final_angle = 180,
             radius:float = 2.0, heigth:float = 1.0, length:float = 1.0, width:float = 1.0,
-            segments:int = False, scale:float = 1.0) -> None:
+            segments:int = False, scale:float = 1.0, color='white', color_border='white') -> None:
         self.x = x
         self.y = y
         self.z = z
@@ -23,6 +23,8 @@ class Arc(Transforms):
         self.segments = segments
         self.initial_angle =  math.radians(initial_angle)
         self.final_angle = math.radians(final_angle)
+        self.color = color
+        self.color_border = color_border
         
     '''
     -> Método para criar um cilindro de acordo com a quantidade de segmentos
@@ -43,7 +45,9 @@ class Arc(Transforms):
                                             width=self.width, 
                                             length=self.length, 
                                             heigth=self.heigth, 
-                                            angle=-(90-math.degrees(angle*count)))
+                                            angle=-(90-math.degrees(angle*count)), 
+                                            color=self.color, 
+                                            color_border=self.color_border)
                 segment.draw()
 
                 count+=1

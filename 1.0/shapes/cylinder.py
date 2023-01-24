@@ -33,7 +33,7 @@ class Cylinder(Transforms):
             glBegin(GL_TRIANGLES)
             
             while count < self.segments:
-                glColor3fv((0, 1, 1))
+                glColor3fv((1, 1, 1))
                 
                 p0_x = self.radius * math.cos(count * angle) + self.x
                 p0_z = self.radius * math.sin(count * angle) + self.z
@@ -45,18 +45,18 @@ class Cylinder(Transforms):
                 glVertex3fv((p0_x, top_y, p0_z))
                 glVertex3fv((p1_x, top_y, p1_z))
 
-                glNormal3fv((p0_x/self.radius, 0, p0_z/self.radius))
+                glNormal3fv(((p0_x-self.x)/self.radius, 0, (p0_z-self.z)/self.radius))
                 glVertex3fv((p0_x, top_y, p0_z))
-                glNormal3fv((p0_x/self.radius, 0, p0_z/self.radius))
+                glNormal3fv(((p0_x-self.x)/self.radius, 0, (p0_z-self.z)/self.radius))
                 glVertex3fv((p0_x, bottom_y, p0_z))
                 glNormal3fv((p1_x/self.radius, 0, p1_z/self.radius))
                 glVertex3fv((p1_x, top_y, p1_z))
 
-                glNormal3fv((p1_x/self.radius, 0, p1_z/self.radius))
+                glNormal3fv(((p1_x-self.x)/self.radius, 0, (p1_z-self.z)/self.radius))
                 glVertex3fv((p1_x, top_y, p1_z))
-                glNormal3fv((p0_x/self.radius, 0, p0_z/self.radius))
+                glNormal3fv(((p0_x-self.x)/self.radius, 0, (p0_z-self.z)/self.radius))
                 glVertex3fv((p0_x, bottom_y, p0_z))
-                glNormal3fv((p1_x/self.radius, 0, p1_z/self.radius))
+                glNormal3fv(((p1_x-self.x)/self.radius, 0, (p1_z-self.z)/self.radius))
                 glVertex3fv((p1_x, bottom_y, p1_z))
 
                 glNormal3fv((0, -1, 0))

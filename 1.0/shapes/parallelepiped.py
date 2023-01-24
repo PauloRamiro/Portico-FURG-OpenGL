@@ -15,7 +15,7 @@ from transforms import *
 * scale -> escala do objeto que será desenhado
 '''
 class Parallelepiped(Transforms):
-    def __init__(self, x:float = 0.0, y:float = 0.0, z:float = 0.0, width:float = 1.0, heigth:float = 1.0, length:float = 1.0, scale = 1.0, angle = 0) -> None:
+    def __init__(self, x:float = 0.0, y:float = 0.0, z:float = 0.0, width:float = 1.0, heigth:float = 1.0, length:float = 1.0, scale = 1.0, angle = 0, color = 'white', color_border='white') -> None:
         self.x = x
         self.y = y
         self.z = z
@@ -24,6 +24,28 @@ class Parallelepiped(Transforms):
         self.length = length
         self.objectScale = scale
         self.angle = math.radians(angle)
+        self.color = color
+        self.color_border = color_border
+        self.colors = {
+            'white': (1.0, 1.0, 1.0, 1.0),
+            'red': (1.0, 0.0, 0.0, 1.0),
+            'green': (0.0, 1.0, 0.0, 1.0),
+            'brown': (78/255, 31/255, 8/255, 1),
+            'green_transparent': (0.0, 1.0, 0.0, .5),
+            'blue': (0.0, 0.0, 1.0, 1.0),
+            'yellow': (1.0, 1.0, 0.0, 1.0)
+            
+        }
+        
+        self.colors_border = {
+            'white': (1.0, 1.0, 1.0),
+            'red': (1.0, 0.0, 0.0),
+            'green': (0.0, 1.0, 0.0),
+            'brown': (70/255, 35/255, 10/255),
+            'green_transparent': (0.0, 1.0, 0.0),
+            'blue': (0.0, 0.0, 1.0),
+            'yellow': (1.0, 1.0, 0.0)
+        }
         
         x_0 = ((self.x + (self.width * math.cos(self.angle))) * self.objectScale)
         y_0 = ((self.y + (self.width * math.sin(self.angle))) * self.objectScale)
@@ -69,12 +91,12 @@ class Parallelepiped(Transforms):
         ]
         
         self.normals = [
-            [(x_3 + (self.width/2)), (y_3 + (self.heigth/2)), (z_3 + 1)],
-            [(x_3 - 1), (y_3 + (self.heigth/2)), (z_3 + (self.length/2))],
-            [(x_3 + (self.width/2)), (y_3 + self.heigth/2), (z_3 + self.length/2)],
-            [(x_3 + self.width + 1), (y_3 + (self.heigth/2)), (z_3 + (self.length/2))],
-            [(x_3 + (self.width/2)), (y_3 + self.heigth + 1), (z_3 + (self.length/2))],
-            [(x_3 + (self.width/2)), (y_3 - 1), ( z_3 + (self.length/2))],
+            [self.width/2, self.heigth/2, 1],
+            [- 1, self.heigth/2, self.length/2],
+            [self.width/2, self.heigth/2, -1],
+            [1, self.heigth/2, self.length/2],
+            [self.width/2, 1, self.length/2],
+            [self.width/2, - 1, self.length/2],
         ]
         
         self.edges = [
@@ -112,7 +134,7 @@ class Parallelepiped(Transforms):
             
             for edge in edges:
                 for point in edge:
-                    glColor3fv((1, 1, 0))
+                    glColor3fv(self.colors_border[self.color_border])
                     glVertex3fv(points[point])
             glEnd()
             
@@ -127,7 +149,7 @@ class Parallelepiped(Transforms):
         try:
             glBegin(GL_QUADS)
             
-            glColor3fv((0, 1, 0))
+            glColor4fv(self.colors[self.color])
             
             for surface in surfaces:
                 glNormal3fv(normals[surfaces.index(surface)])
