@@ -151,11 +151,11 @@ class Portico:
         self.arco_lateral_esquerda_tras_3 = Arc(x=2.1, y=7.1,  z = -10,initial_angle=115.25, final_angle=130.5, radius = 30, width=.08, heigth=.55, length=.08, segments = 360)
 
 #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- PARTE SUPERIOR -=-=-=--=-=-=-=-=-=-=-=-=-=--=-=-=-=--==-=-=--=-=-=--=-=-=-=-=--=-=--=-=-=-=-==-=-=-=--=
-        self.arco_principal_teto = Arc(x=0, y=10.1, z=0.5, initial_angle=64.5, final_angle=115.5, radius = 30, width=.5, heigth=.08, length=-16, color='green_transparent', color_border='green')
+        self.arco_principal_teto = Arc(x=0, y=10.1, z=0.5, initial_angle=64.5, final_angle=115.5, radius = 30, width=.5, heigth=.08, length=-11, color='green_transparent', color_border='green')
 
-        self.arco_lateral_direita_teto = Arc(x=-1.92, y=7.8, z=0.5,  initial_angle=53.5, final_angle=65.65, radius = 30, width=.4, heigth=.08, length=-16, color='green_transparent', color_border='green')
+        self.arco_lateral_direita_teto = Arc(x=-1.92, y=7.8, z=0.5,  initial_angle=53.5, final_angle=65.65, radius = 30, width=.4, heigth=.08, length=-11, color='green_transparent', color_border='green')
         
-        self.arco_lateral_esquerda_teto = Arc(x=2.08, y=7.8, z=0.5,  initial_angle=115.5, final_angle=127.25, radius = 30, width=.4, heigth=.08, length=-16, color='green_transparent', color_border='green')
+        self.arco_lateral_esquerda_teto = Arc(x=2.08, y=7.8, z=0.5,  initial_angle=115.5, final_angle=127.25, radius = 30, width=.4, heigth=.08, length=-11, color='green_transparent', color_border='green')
 
         self.floor = Parallelepiped(x=-50, y=0, z=50, width=150, heigth=-2, length=-150, color='brown')
 #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-        
@@ -348,7 +348,7 @@ class Portico:
                 self.arco_lateral_esquerda_teto.draw()
                 self.arco_lateral_direita_teto.draw()
                 
-                self.floor.draw()
+                #self.floor.draw()
 
                 pygame.display.flip()
                 pygame.time.wait(10)
